@@ -1,7 +1,9 @@
+import SingleTableForm from "../../features/SingleTableForm/SingleTableForm";
+
 const WaiterApp = () => {
   return(
     <div>
-      <h1>WaiterApp</h1>
+      <SingleTableForm />
     </div>
   );
 };
