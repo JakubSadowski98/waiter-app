@@ -16,7 +16,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/waiter" element={<WaiterApp />} /> 
+        <Route path="/table/:tableId" element={<WaiterApp />} /> 
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
