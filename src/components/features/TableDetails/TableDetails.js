@@ -40,6 +40,7 @@ const TableDetails = prop => {
       bill: updatedBill,
     };
     dispatch(editTable(thisTable)); // uruchamia reducera, a ten z kolei uruchamia tablesReducer
+    alert('The table was update');
     navigate('/'); // nawigowanie do podstrony home
   }
 

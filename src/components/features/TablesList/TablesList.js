@@ -15,24 +15,19 @@ const TablesList = () => {
       <h1>Tables list</h1>
       <Container>
         {tables.map(table => (
-          <Row key={table.id} className="align-items-center">
+          <Row key={table.id}>
             <Col>
-              <Row>
-                <Col>
-                  <h3>Table {table.id}</h3>
-                </Col>
-                <Col>
-                  <p className="px-0"></p>
-                  <p><strong>Status: </strong>{table.status}</p>
-                 </Col>
-              </Row>
+              <h3>Table {table.id}</h3>
+            </Col>
+            <Col>
+              <p className="px-0"></p>
+              <p><strong>Status: </strong>{table.status}</p>
             </Col>
             <Col className="text-end">
               <NavLink to={`/table/${table.id}`}>
                 <Button variant="primary">Show more</Button>
               </NavLink>
-            </Col>
-            <Col className="text-end">
+              <span> </span>
               <TableRemove id={table.id}/>
             </Col>
           </Row>

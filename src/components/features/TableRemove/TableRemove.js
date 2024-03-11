@@ -10,21 +10,24 @@ const TableRemove = param => {
 
   const handleRemoveTable = e => {
     e.preventDefault();
-    dispatch(removeTable(removeTableId));
-    // get new id to tables corresponding to the order in the state
-    let newId = removeTableId;
-    for( let table of allTables ) {
-      if (table.id > removeTableId) {
-        table.id = (newId++).toString();
-        dispatch(editTable(table));
+    let result = window.confirm('Are you sure to remove this table?');
+    if (result === true) {
+      dispatch(removeTable(removeTableId));
+      // get new id to tables corresponding to the order in the state
+      let newId = removeTableId;
+      for( let table of allTables ) {
+        if (table.id > removeTableId) {
+          table.id = (newId++).toString();
+          dispatch(editTable(table));
+        }
       }
     }
   }
   
   return(
-        <Button type='submit' variant="danger" onClick={handleRemoveTable}>
-          Remove
-        </Button>
+    <Button type='submit' variant="danger" onClick={handleRemoveTable}>
+      Remove
+    </Button>
   );
 };
 
