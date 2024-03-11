@@ -1,9 +1,11 @@
-import AllTables from "../../features/AllTables/AllTables";
+import TablesList from "../../features/TablesList/TablesList";
+import TableAdd from "../../features/TableAdd/TableAdd";
 
 const Home = () => {
   return(
     <div>
-      <AllTables />
+      <TablesList />
+      <TableAdd />
     </div>
   );
 };

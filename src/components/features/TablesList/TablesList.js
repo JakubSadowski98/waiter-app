@@ -4,21 +4,22 @@ import { Row, Col } from "react-bootstrap";
 import { NavLink } from 'react-router-dom';
 import { getAllTables } from '../../../redux/tablesRedux';
 import { useSelector } from 'react-redux';
+import TableRemove from '../TableRemove/TableRemove';
 
 
-const AllTables = () => {
+const TablesList = () => {
   const tables = useSelector(getAllTables);
 
   return (
     <div>
-      <h1>All tables</h1>
+      <h1>Tables list</h1>
       <Container>
         {tables.map(table => (
           <Row key={table.id} className="align-items-center">
             <Col>
               <Row>
                 <Col>
-                  <h2>Table {table.id}</h2>
+                  <h3>Table {table.id}</h3>
                 </Col>
                 <Col>
                   <p className="px-0"></p>
@@ -31,6 +32,9 @@ const AllTables = () => {
                 <Button variant="primary">Show more</Button>
               </NavLink>
             </Col>
+            <Col className="text-end">
+              <TableRemove id={table.id}/>
+            </Col>
           </Row>
         ))}
       </Container>
@@ -38,4 +42,4 @@ const AllTables = () => {
   )
 };
 
-export default AllTables;
+export default TablesList;
