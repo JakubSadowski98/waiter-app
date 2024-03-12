@@ -1,27 +1,15 @@
 import { Button } from 'react-bootstrap';
-import { removeTable, getAllTables, editTable } from '../../../redux/tablesRedux';
+import { getAllTables, removeTableRequest } from '../../../redux/tablesRedux';
 import { useDispatch, useSelector } from 'react-redux';
 
 const TableRemove = param => {
-  let removeTableId = param.id;
-  const allTables = useSelector(getAllTables);
-
+  let tableId = param.id;
   const dispatch = useDispatch();
 
   const handleRemoveTable = e => {
     e.preventDefault();
     let result = window.confirm('Are you sure to remove this table?');
-    if (result === true) {
-      dispatch(removeTable(removeTableId));
-      // get new id to tables corresponding to the order in the state
-      let newId = removeTableId;
-      for( let table of allTables ) {
-        if (table.id > removeTableId) {
-          table.id = (newId++).toString();
-          dispatch(editTable(table));
-        }
-      }
-    }
+    if (result === true) dispatch(removeTableRequest(tableId));
   }
   
   return(

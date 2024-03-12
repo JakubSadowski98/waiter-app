@@ -9,7 +9,7 @@ import TableRemove from '../TableRemove/TableRemove';
 
 const TablesList = () => {
   const tables = useSelector(getAllTables);
-
+  
   return (
     <div>
       <h1>Tables list</h1>

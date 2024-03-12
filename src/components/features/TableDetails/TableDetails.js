@@ -1,6 +1,6 @@
 import styles from './TableDetails.module.scss';
 import { useDispatch } from 'react-redux';
-import { editTable } from '../../../redux/tablesRedux';
+import { editTableRequest } from '../../../redux/tablesRedux';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
@@ -39,7 +39,7 @@ const TableDetails = prop => {
       maxPeopleAmount: updatedMaxPeopleAmount,
       bill: updatedBill,
     };
-    dispatch(editTable(thisTable)); // uruchamia reducera, a ten z kolei uruchamia tablesReducer
+    dispatch(editTableRequest(thisTable)); // uruchamia reducera, a ten z kolei uruchamia tablesReducer
     alert('The table was update');
     navigate('/'); // nawigowanie do podstrony home
   }
@@ -70,10 +70,10 @@ const TableDetails = prop => {
             </Form.Label>
             <Col sm={3}>
               <Form.Select className={styles.input_select} value= {status} onChange={ e => {setStatus(e.target.value); setPeopleAmount(0); setMaxPeopleAmount(4); setBill(0)}} aria-label="Default select example">
-                <option value="free">Free</option>
-                <option value="busy">Busy</option>
-                <option value="reserved">Reserved</option>
-                <option value="cleaning">Cleaning</option>
+                <option value="free">free</option>
+                <option value="busy">busy</option>
+                <option value="reserved">reserved</option>
+                <option value="cleaning">cleaning</option>
               </Form.Select>
             </Col>
           </Row>
