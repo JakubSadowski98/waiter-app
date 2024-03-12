@@ -1,4 +1,5 @@
 // obsługa kolekcji state.tables
+import { API_URL } from '../config.js'
 
 //selectors
 export const getTableById =({ tables }, tableId) => tables.find(table => table.id === tableId);
@@ -21,7 +22,7 @@ export const editTable = payload => ({type: EDIT_TABLE, payload});
 // requests - communication with the API server - download data from server
 export const fetchTables = () => { 
   return dispatch => {
-    fetch('http://localhost:3131/api/tables')
+    fetch(`${API_URL}/tables`)
       .then(response => response.json())
       .then(tables => dispatch(updateTables(tables)));
   };
@@ -37,7 +38,7 @@ export const addTableRequest = newTable => {
       body: JSON.stringify(newTable),
     };
 
-    fetch('http://localhost:3131/api/tables', options)
+    fetch(`${API_URL}/tables`, options)
       .then(() => dispatch(addTable(newTable)))
       .catch(error => console.error('An error occurred while editing the table:', error));
   };
@@ -52,7 +53,7 @@ export const removeTableRequest = tableId => {
       },
     };
 
-    fetch(`http://localhost:3131/api/tables/${tableId}`, options)
+    fetch(`${API_URL}/tables/${tableId}`, options)
       .then(() => dispatch(removeTable(tableId)))
       .catch(error => console.error('An error occurred while editing the table:', error));
   };
@@ -68,7 +69,7 @@ export const editTableRequest = editedTable => {
       body: JSON.stringify(editedTable),
     };
 
-    fetch(`http://localhost:3131/api/tables/${editedTable.id}`, options)
+    fetch(`${API_URL}/tables/${editedTable.id}`, options)
       .then(() => dispatch(editTable(editedTable)))
       .catch(error => console.error('An error occurred while editing the table:', error));
   };

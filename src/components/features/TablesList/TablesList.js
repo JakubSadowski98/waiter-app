@@ -1,5 +1,4 @@
-import { Container } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
+import { Container, Button, Spinner } from 'react-bootstrap';
 import { Row, Col } from "react-bootstrap";
 import { NavLink } from 'react-router-dom';
 import { getAllTables } from '../../../redux/tablesRedux';
@@ -10,6 +9,14 @@ import TableRemove from '../TableRemove/TableRemove';
 const TablesList = () => {
   const tables = useSelector(getAllTables);
   
+  if(tables.length === 0)
+    return (
+      <div>
+        <Spinner animation='border' variant='primary' />
+        <p>Loading</p>
+      </div>
+    );
+
   return (
     <div>
       <h1>Tables list</h1>
