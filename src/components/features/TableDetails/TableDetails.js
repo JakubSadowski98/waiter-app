@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { Row, Col, Button, Form as ReactForm } from "react-bootstrap";
+import PropTypes  from 'prop-types';
 
-const TableDetails = prop => {
-  const singleTable = prop.singleTable;
+const TableDetails = props => {
+  const singleTable = props.singleTable;
   
   const dispatch = useDispatch(); // funkcja, która jest pośrednikiem do włączenia funkcji reducer, która z kolei włącza wszystkie subreducery
   const navigate = useNavigate();
@@ -119,6 +120,10 @@ const TableDetails = prop => {
       </Form>
     </div>
   );
+};
+
+TableDetails.propTypes = {
+  singleTable: PropTypes.object.isRequired
 };
 
 export default TableDetails;

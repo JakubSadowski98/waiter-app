@@ -13,7 +13,7 @@ const TablesList = () => {
     return (
       <div>
         <Spinner animation='border' variant='primary' />
-        <p>Loading</p>
+        <p>Loading...</p>
       </div>
     );
 
@@ -37,6 +37,7 @@ const TablesList = () => {
               <span> </span>
               <TableRemove id={table.id}/>
             </Col>
+            <hr  style={{ color: '#000000', backgroundColor: '#000000', height: .5, borderColor : '#000000' }}/>
           </Row>
         ))}
       </Container>

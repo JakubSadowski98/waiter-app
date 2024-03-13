@@ -1,9 +1,10 @@
 import { Button } from 'react-bootstrap';
-import { getAllTables, removeTableRequest } from '../../../redux/tablesRedux';
-import { useDispatch, useSelector } from 'react-redux';
+import { removeTableRequest } from '../../../redux/tablesRedux';
+import { useDispatch } from 'react-redux';
+import PropTypes  from 'prop-types';
 
-const TableRemove = param => {
-  let tableId = param.id;
+const TableRemove = props => {
+  let tableId = props.id;
   const dispatch = useDispatch();
 
   const handleRemoveTable = e => {
@@ -17,6 +18,10 @@ const TableRemove = param => {
       Remove
     </Button>
   );
+};
+
+TableRemove.propTypes = {
+  id: PropTypes.string.isRequired
 };
 
 export default TableRemove;
